@@ -1,14 +1,19 @@
-'''a simple integration test to send a request to the app server'''
-
-import request
+'''simple integration tests to send requests to database'''
+import requests
 import unittest
 
-class IntegrateTests(unittest.TestCase):
+URL = "http://localhost:5000/"
+
+class TestWeb(unittest.TestCase):
 
     def test_post(self):
-        r = requests.post('http://localhost:5000/'+ “add”, data = {‘expression’: ‘3240532+3413+1000’})
+        r = requests.post(URL + "add", data = {'expression': '333+22+11+5'})
         self.assertEqual(r.status_code, 200)
 
+    def test_post(self):
+        r = requests.post(URL + "add", data = {'expression': '32-6+22/5'})
+        self.assertEqual(r.status_code, 200)
+      
+      
 if __name__ == '__main__':
     unittest.main()
-
